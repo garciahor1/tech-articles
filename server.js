@@ -18,7 +18,8 @@ server.use(express.json());
 server.use(express.static("public"));
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/articlesdb", { useNewUrlParser: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 require("./public/routes/html-routes.js")(server,db);
 require("./public/routes/api-routes.js")(server,db);
