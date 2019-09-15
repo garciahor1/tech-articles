@@ -1,6 +1,6 @@
 
 $.getJSON("/articles", function (data) {
- 
+
   data.map((dbAllArticles) => {
     dbAllArticles.comment.map((comments => {
       console.log(comments.body);
@@ -53,15 +53,11 @@ $.getJSON("/articles", function (data) {
 });
 
 $(".display-articles-here").on("click", ".the-red-button", function () {
-  // Grab the id associated with the article from the submit button
+
   var buttonId = $(this).attr("id");
   var comment = $(`#comment-${buttonId}`).val();
 
-  //console.log(buttonId);
-  //console.log(comment);
-
   if (comment != "") {
-    // Run a POST request to change the note, using what's entered in the inputs
     $.ajax({
       method: "POST",
       url: "/add",
@@ -70,12 +66,7 @@ $(".display-articles-here").on("click", ".the-red-button", function () {
         body: comment,
       }
     })
-      // With that done
       .then(function (data) {
-        // Log the response
-        //console.log(data);
-        // Empty the notes section
-
         if (comment) {
           $(`#display-comment-${buttonId}`).append(
             ` <hr class="my-2">
@@ -88,15 +79,9 @@ $(".display-articles-here").on("click", ".the-red-button", function () {
         }
         $(`#comment-${buttonId}`).val("");
       });
-
   } else {
     alert("You have nothing in comment box")
   }
-
-
-  // Also, remove the values entered in the input and textarea for note entry
-
-
 })
 
 
