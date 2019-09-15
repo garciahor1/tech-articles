@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+var uniqueValidator = require('mongoose-unique-validator');
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
 // Using the Schema constructor, create a new UserSchema object
@@ -36,7 +37,7 @@ articleDescription:{
   // This allows us to populate the User with any associated Notes
 
 });
-
+ArticleSchema.plugin(uniqueValidator);
 // This creates our model from the above schema, using mongoose's model method
 var Article = mongoose.model("Article", ArticleSchema);
 

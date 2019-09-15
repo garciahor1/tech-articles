@@ -4,7 +4,6 @@ const path = require("path");
 
 module.exports = function (server, db) {
 
-
   server.get("/", function (req, res) {
 
     axios.get("https://www.google.com/search?q=technology&tbm=nws&rlz=1C5CHFA_enUS736US736&biw=1680&bih=947&gbv=1&sei=O2V4Xcr8LIK7ggfVm73wAg").then(function (response) {
@@ -48,7 +47,7 @@ module.exports = function (server, db) {
       });
 
       db.Article.create(articlesCol)
-        .then(function (dbUser) {
+        .then(function (dbS) {
 
         })
         .catch(function (err) {
